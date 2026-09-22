@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utforsk – Turistforeningen i Utopia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Alle sonene er direkte barn av .side, slik at grid-area fungerer -->
+  <div class="side side--kart">
+
+    <div class="banner">Studentoppgave ved USN</div>
+
+    <header class="header">
+      <div class="header-innhold">
+        <a class="logo" href="kart.html">Turistforeningen i Utopia</a>
+        <nav aria-label="Hovedmeny">
+          <ul>
+            <li><a href="kart.html" aria-current="page">Utforsk</a></li>
+            <li><a href="hytte.html">Hytte</a></li>
+            <li><a href="annonsor.html">Annonsørportal</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <aside class="filter" aria-label="Filtre">
+      <h2>Filtre</h2>
+      <form>
+        <fieldset>
+          <legend>Vis</legend>
+          <label><input type="checkbox" checked> Turruter</label>
+          <label><input type="checkbox" checked> Hytter</label>
+          <label><input type="checkbox" checked> Fellesturer</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Turruter</legend>
+          <label for="vanskelighet">Vanskelighetsgrad</label>
+          <select id="vanskelighet">
+            <option>Alle</option>
+            <option>Enkel</option>
+            <option>Middels</option>
+            <option>Krevende</option>
+          </select>
+          <label for="varighet">Maks varighet (timer)</label>
+          <input type="range" id="varighet" min="1" max="12" value="6">
+          <label><input type="checkbox"> Fottur</label>
+          <label><input type="checkbox"> Sykkeltur</label>
+          <label><input type="checkbox"> Skitur</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Hytter</legend>
+          <label><input type="radio" name="betjening" checked> Alle</label>
+          <label><input type="radio" name="betjening"> Betjent</label>
+          <label><input type="radio" name="betjening"> Ubetjent</label>
+          <label for="pris">Prisnivå</label>
+          <select id="pris">
+            <option>Alle</option>
+            <option>Lav</option>
+            <option>Middels</option>
+            <option>Høy</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fellesturer</legend>
+          <label for="uke">Startuke</label>
+          <input type="number" id="uke" min="1" max="53" placeholder="F.eks. 30">
+          <label><input type="checkbox"> Bare ledige plasser</label>
+        </fieldset>
+
+        <button class="knapp" type="button">Bruk filtre</button>
+      </form>
+    </aside>
+
+    <main class="innhold">
+      <h1>Utforsk turer, hytter og fellesturer</h1>
+      <p class="dempet">Bruk filtrene til venstre for å avgrense kartet og resultatene.</p>
+
+      <div class="kart" role="img" aria-label="Plassholder for kartet">
+        Kartet vises her
+      </div>
+
+      <h2>Resultater</h2>
+      <div class="kort-rutenett">
+        <article class="kort">
+          <h3>Topptur til Gaustatoppen</h3>
+          <p class="dempet">Kjent tur du kan gå på egen hånd.</p>
+          <span class="merke">Turrute</span>
+          <span class="merke">Krevende</span>
+        </article>
+        <article class="kort">
+          <h3>Gjendesheim</h3>
+          <p class="dempet">Overnattingssted ved Gjende.</p>
+          <span class="merke">Hytte</span>
+          <span class="merke">Betjent</span>
+        </article>
+        <article class="kort">
+          <h3>Hardangervidda på tvers</h3>
+          <p class="dempet">Fem dager med turleder.</p>
+          <span class="merke">Fellestur</span>
+          <span class="merke">Fleksibel startdato</span>
+          <span class="merke">Ledige plasser</span>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer">
+      Eksempelside for Arbeidskrav 1, oppgave 8 (CSS Grid). All tekst og alle tall er eksempeldata.
+    </footer>
+
+  </div>
+</body>
+</html>

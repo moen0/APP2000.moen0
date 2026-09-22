@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turruter, hytter og fellesturer i Utopia. Finn din neste tur med Turistforeningen i Utopia.">
+  <meta name="theme-color" content="#16302B">
+  <title>Turistforeningen i Utopia – Finn din neste tur</title>
+
+  <!-- Skrifttyper (har reservefonter hvis de ikke lastes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+  <a class="skip-link" href="#innhold">Hopp til innhold</a>
+
+  <!-- Banner -->
+  <div class="banner">Studentoppgave ved USN</div>
+
+  <!-- Header med navigasjon -->
+  <header class="site-header">
+    <div class="wrap header__inner">
+      <a class="logo" href="#top">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">Turistforeningen i Utopia</span>
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-button">
+        <span>Meny</span>
+        <span class="menu-button__bars" aria-hidden="true"></span>
+      </label>
+
+      <nav class="nav" aria-label="Hovedmeny">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#turruter">Turruter</a></li>
+          <li><a class="nav__link" href="#hytter">Hytter</a></li>
+          <li><a class="nav__link" href="#fellesturer">Fellesturer</a></li>
+          <li><a class="nav__link" href="#annonsorer">Annonsører</a></li>
+          <li><a class="nav__link nav__link--cta" href="#">Bli medlem</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="innhold">
+
+    <!-- Hero med søkefelt -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__scene" aria-hidden="true">
+        <span class="hero__sun"></span>
+        <span class="hero__ridge hero__ridge--far"></span>
+        <span class="hero__ridge hero__ridge--mid"></span>
+        <span class="hero__ridge hero__ridge--near"></span>
+      </div>
+
+      <div class="wrap">
+        <h1 class="hero__title" id="hero-title">Finn veien ut i Utopia</h1>
+        <p class="hero__lead">Turruter, hytter og fellesturer fra kyststien til høyfjellet. Søk, planlegg og ta appen med deg på tur.</p>
+
+        <form class="search" role="search" action="#" method="get">
+          <div class="search__field search__field--wide">
+            <label for="sok-sted">Sted eller navn</label>
+            <input id="sok-sted" name="q" type="search" placeholder="For eksempel Blåtind">
+          </div>
+          <div class="search__field">
+            <label for="sok-type">Jeg leter etter</label>
+            <select id="sok-type" name="type">
+              <option value="turruter">Turruter</option>
+              <option value="hytter">Hytter</option>
+              <option value="fellesturer">Fellesturer</option>
+            </select>
+          </div>
+          <div class="search__field">
+            <label for="sok-niva">Vanskelighetsgrad</label>
+            <select id="sok-niva" name="niva">
+              <option value="">Alle</option>
+              <option value="gronn">Grønn – enkel</option>
+              <option value="bla">Blå – middels</option>
+              <option value="rod">Rød – krevende</option>
+              <option value="svart">Svart – ekspert</option>
+            </select>
+          </div>
+          <button class="button search__button" type="submit">Søk</button>
+        </form>
+
+        <div class="quick">
+          <p>Populære søk:</p>
+          <ul class="chips">
+            <li><a href="#turruter">Dagsturer</a></li>
+            <li><a href="#turruter">Toppturer</a></li>
+            <li><a href="#fellesturer">Turer med barn</a></li>
+            <li><a href="#hytter">Hytter åpne nå</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Turruter -->
+    <section class="section" id="turruter" aria-labelledby="turruter-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 id="turruter-title">Populære turruter</h2>
+            <p>Merkede stier med lengde, tid og vanskelighetsgrad, så du finner en tur som passer i dag.</p>
+          </div>
+          <a class="text-link" href="#">Se alle turruter</a>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card__art art--dal">
+              <span class="level level--gronn">Grønn</span>
+            </div>
+            <div class="card__body">
+              <h3>Lysdalen langs elva</h3>
+              <p>Lett tur på bred sti langs Lysdalselva. Passer for hele familien, med bålplass halvveis.</p>
+              <dl class="stats">
+                <div><dt>Lengde</dt><dd>6,2 km</dd></div>
+                <div><dt>Tid</dt><dd>2 t</dd></div>
+                <div><dt>Stigning</dt><dd>90 m</dd></div>
+              </dl>
+              <a class="text-link card__link" href="#">Se rute<span class="visually-hidden"> Lysdalen langs elva</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__art art--vann">
+              <span class="level level--bla">Blå</span>
+            </div>
+            <div class="card__body">
+              <h3>Fjellvatnet rundt</h3>
+              <p>Rundtur rundt Fjellvatnet med utsikt mot Blåtind og flere gode steder å ta en pause.</p>
+              <dl class="stats">
+                <div><dt>Lengde</dt><dd>9,8 km</dd></div>
+                <div><dt>Tid</dt><dd>3 t 30 min</dd></div>
+                <div><dt>Stigning</dt><dd>240 m</dd></div>
+              </dl>
+              <a class="text-link card__link" href="#">Se rute<span class="visually-hidden"> Fjellvatnet rundt</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__art art--rygg">
+              <span class="level level--svart">Svart</span>
+            </div>
+            <div class="card__body">
+              <h3>Storeskaret</h3>
+              <p>Luftig ryggtur med bratte partier og bart fjell. Krever god form og stabilt vær.</p>
+              <dl class="stats">
+                <div><dt>Lengde</dt><dd>17 km</dd></div>
+                <div><dt>Tid</dt><dd>8 t</dd></div>
+                <div><dt>Stigning</dt><dd>1 340 m</dd></div>
+              </dl>
+              <a class="text-link card__link" href="#">Se rute<span class="visually-hidden"> Storeskaret</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hytter -->
+    <section class="section section--white" id="hytter" aria-labelledby="hytter-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 id="hytter-title">Hytter</h2>
+            <p>Fra betjente fjellstuer til enkle selvbetjente hytter. Sjekk åpningstid og book sengeplass.</p>
+          </div>
+          <a class="text-link" href="#">Se alle hytter</a>
+        </div>
+
+        <ul class="hut-list">
+          <li class="hut">
+            <div class="hut__main">
+              <h3>Fjellvatnhytta</h3>
+              <p>Stor hytte ved Fjellvatnet med kafé og felles middag. Utgangspunkt for turer til Blåtind.</p>
+            </div>
+            <dl class="stats">
+              <div><dt>Høyde</dt><dd>1 120 moh.</dd></div>
+              <div><dt>Sengeplasser</dt><dd>42</dd></div>
+              <div><dt>Åpen</dt><dd>Juni–september</dd></div>
+            </dl>
+            <div class="hut__action">
+              <span class="status status--betjent">Betjent</span>
+              <a class="text-link" href="#">Book overnatting<span class="visually-hidden"> Fjellvatnhytta</span></a>
+            </div>
+          </li>
+
+          <li class="hut">
+            <div class="hut__main">
+              <h3>Tåkestua</h3>
+              <p>Koselig hytte i skogkanten ved Lysdalen. Ved og gass er inkludert, og du lager maten selv.</p>
+            </div>
+            <dl class="stats">
+              <div><dt>Høyde</dt><dd>870 moh.</dd></div>
+              <div><dt>Sengeplasser</dt><dd>18</dd></div>
+              <div><dt>Åpen</dt><dd>Hele året</dd></div>
+            </dl>
+            <div class="hut__action">
+              <span class="status status--selvbetjent">Selvbetjent</span>
+              <a class="text-link" href="#">Book overnatting<span class="visually-hidden"> Tåkestua</span></a>
+            </div>
+          </li>
+
+          <li class="hut">
+            <div class="hut__main">
+              <h3>Skarsætra</h3>
+              <p>Enkel hytte under Storeskaret. Nøkkelen hentes på forhånd, og du tar med egen mat.</p>
+            </div>
+            <dl class="stats">
+              <div><dt>Høyde</dt><dd>1 340 moh.</dd></div>
+              <div><dt>Sengeplasser</dt><dd>12</dd></div>
+              <div><dt>Åpen</dt><dd>Juli–oktober</dd></div>
+            </dl>
+            <div class="hut__action">
+              <span class="status status--ubetjent">Ubetjent</span>
+              <a class="text-link" href="#">Book overnatting<span class="visually-hidden"> Skarsætra</span></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fellesturer -->
+    <section class="section" id="fellesturer" aria-labelledby="fellesturer-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <h2 id="fellesturer-title">Kommende fellesturer</h2>
+            <p>Bli med en turleder og andre turglade. Alle turene er åpne for medlemmer.</p>
+          </div>
+          <a class="text-link" href="#">Se alle fellesturer</a>
+        </div>
+
+        <div class="trip-grid">
+          <article class="trip">
+            <time class="trip__date" datetime="2026-10-03">
+              <span class="trip__weekday">lør.</span>
+              <span class="trip__day">3</span>
+              <span class="trip__month">okt.</span>
+            </time>
+            <div class="trip__body">
+              <h3>Soppetur i Lysdalen</h3>
+              <p>Lær å kjenne igjen matsopp sammen med en erfaren turleder. Vi lager lunsj på bål.</p>
+              <dl class="stats">
+                <div><dt>Nivå</dt><dd>Grønn</dd></div>
+                <div><dt>Varighet</dt><dd>3 t</dd></div>
+              </dl>
+              <div class="trip__foot">
+                <span class="status status--selvbetjent">12 plasser igjen</span>
+                <a class="button button--outline" href="#">Meld deg på<span class="visually-hidden"> Soppetur i Lysdalen</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="trip">
+            <time class="trip__date" datetime="2026-10-11">
+              <span class="trip__weekday">søn.</span>
+              <span class="trip__day">11</span>
+              <span class="trip__month">okt.</span>
+            </time>
+            <div class="trip__body">
+              <h3>Blåtind i rolig tempo</h3>
+              <p>Tur for deg som er ny på fjellet. Mange pauser og god tid til utsikten fra toppen.</p>
+              <dl class="stats">
+                <div><dt>Nivå</dt><dd>Blå</dd></div>
+                <div><dt>Varighet</dt><dd>6 t</dd></div>
+              </dl>
+              <div class="trip__foot">
+                <span class="status status--few">Få plasser igjen</span>
+                <a class="button button--outline" href="#">Meld deg på<span class="visually-hidden"> Blåtind i rolig tempo</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="trip">
+            <time class="trip__date" datetime="2026-10-23">
+              <span class="trip__weekday">fre.–søn.</span>
+              <span class="trip__day">23–25</span>
+              <span class="trip__month">okt.</span>
+            </time>
+            <div class="trip__body">
+              <h3>Helgetur til Skarsætra</h3>
+              <p>To netter i hytta under Storeskaret. Felles middag og tur opp i skaret på lørdag.</p>
+              <dl class="stats">
+                <div><dt>Nivå</dt><dd>Rød</dd></div>
+                <div><dt>Varighet</dt><dd>3 dager</dd></div>
+              </dl>
+              <div class="trip__foot">
+                <span class="status status--ubetjent">Venteliste</span>
+                <a class="button button--outline" href="#">Sett deg på venteliste<span class="visually-hidden"> Helgetur til Skarsætra</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Annonsører -->
+    <section class="section section--lichen" id="annonsorer" aria-labelledby="annonsorer-title">
+      <div class="wrap advertise">
+        <div class="advertise__intro">
+          <h2 id="annonsorer-title">Nå folk som er på vei ut</h2>
+          <p>Selger du turutstyr, mat, transport eller overnatting? Med en annonse hos oss møter du folk akkurat når de planlegger neste tur. Annonsene vises i appen og på nettsiden, og alltid knyttet til en rute, en hytte eller en fellestur.</p>
+          <div class="advertise__actions">
+            <a class="button button--dark" href="mailto:annonse@utopia-tur.example">Kontakt oss om annonsering</a>
+            <a class="text-link" href="#">Last ned mediepakken</a>
+          </div>
+        </div>
+
+        <ul class="formats">
+          <li>
+            <h3>Ruteannonse</h3>
+            <p>Vises på rutesiden og i kartet. Passer for utstyrsbutikker og kafeer langs stien.</p>
+          </li>
+          <li>
+            <h3>Hyttepartner</h3>
+            <p>Bli leverandør av mat, gass eller transport til hyttene, og bli synlig på hyttesiden.</p>
+          </li>
+          <li>
+            <h3>Turfølge</h3>
+            <p>Støtt en fellestur og få navnet ditt på påmeldingen og i turleders utstyrsliste.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div class="footer__about">
+        <a class="logo logo--light" href="#top">
+          <span class="logo__mark" aria-hidden="true"></span>
+          <span class="logo__text">Turistforeningen i Utopia</span>
+        </a>
+        <p>Vi hjelper folk ut på tur i Utopia, med merkede stier, hytter og fellesturer hele året.</p>
+      </div>
+
+      <nav aria-label="Utforsk">
+        <h2 class="footer__title">Utforsk</h2>
+        <ul class="footer__list">
+          <li><a href="#turruter">Turruter</a></li>
+          <li><a href="#hytter">Hytter</a></li>
+          <li><a href="#fellesturer">Fellesturer</a></li>
+          <li><a href="#">Last ned appen</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Om oss">
+        <h2 class="footer__title">Om oss</h2>
+        <ul class="footer__list">
+          <li><a href="#">Bli medlem</a></li>
+          <li><a href="#annonsorer">Annonsere</a></li>
+          <li><a href="#">Personvern</a></li>
+          <li><a href="#">Vilkår</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="footer__title">Kontakt</h2>
+        <address>
+          Fjellveien 1<br>
+          0000 Utopia<br>
+          <a href="mailto:post@utopia-tur.example">post@utopia-tur.example</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="wrap footer__bottom">
+      <p>© 2026 Turistforeningen i Utopia. Studentoppgave ved USN.</p>
+      <p>Utopia er et fiktivt sted. Turer, hytter og kontaktinformasjon er eksempler.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

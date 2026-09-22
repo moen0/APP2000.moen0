@@ -1,8 +1,5 @@
 "use strict";
 
-// Generisk: bygger HTML-tabell fra en liste med objekter.
-// Kolonnene utledes fra nøklene i det første objektet, så funksjonen
-// fungerer for et hvilket som helst SQL-resultat eksportert som JSON.
 function bygTabell(rader, container) {
     container.replaceChildren();
 

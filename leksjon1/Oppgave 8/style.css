@@ -1,0 +1,383 @@
+/* ==========================================================
+   Standard layout for turappen med CSS Grid
+   Alle sidene bruker de samme sonene (banner, header, footer).
+   Bare midtdelen endres fra side til side.
+   ========================================================== */
+
+:root {
+  --bg: #f2f5f3;
+  --flate: #ffffff;
+  --tekst: #14251f;
+  --dempet: #4b5f57;
+  --kant: #c8d5ce;
+  --primar: #1e5a47;
+  --primar-mork: #123a2e;
+  --aksent: #2c6e8f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", sans-serif;
+  color: var(--tekst);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--aksent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--aksent);
+  outline-offset: 2px;
+}
+
+/* ----------------------------------------------------------
+   1. GRID-STRUKTUREN
+   Mobil først: én kolonne, alle soner under hverandre.
+   Hver sidetype (.side--kart osv.) gir sonene navn med
+   grid-template-areas, som en tegning av layouten.
+   ---------------------------------------------------------- */
+
+.side {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr auto;
+}
+
+/* Rekkefølgen på mobil (en sone per rad) */
+.side--kart {
+  grid-template-areas:
+    "banner"
+    "header"
+    "filter"
+    "innhold"
+    "footer";
+}
+
+.side--hytte {
+  grid-template-areas:
+    "banner"
+    "header"
+    "innhold"
+    "sidepanel"
+    "footer";
+}
+
+.side--annonsor {
+  grid-template-areas:
+    "banner"
+    "header"
+    "meny"
+    "innhold"
+    "footer";
+}
+
+/* Nettbrett og PC: to kolonner. Bare midtdelen er ulik.
+   Banner, header og footer strekker seg over begge kolonnene. */
+@media (min-width: 56rem) {
+  .side {
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .side--kart {
+    grid-template-columns: 18rem minmax(0, 1fr);
+    grid-template-areas:
+      "banner banner"
+      "header header"
+      "filter innhold"
+      "footer footer";
+  }
+
+  .side--hytte {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    grid-template-areas:
+      "banner banner"
+      "header header"
+      "innhold sidepanel"
+      "footer footer";
+  }
+
+  .side--annonsor {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-areas:
+      "banner banner"
+      "header header"
+      "meny innhold"
+      "footer footer";
+  }
+}
+
+/* ----------------------------------------------------------
+   2. SONENE: hvert element kobles til et navn i tegningen
+   ---------------------------------------------------------- */
+
+.banner {
+  grid-area: banner;
+  background: var(--primar-mork);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.875rem;
+  padding: 0.4rem 1rem;
+}
+
+.header {
+  grid-area: header;
+  background: var(--flate);
+  border-bottom: 1px solid var(--kant);
+}
+
+.header-innhold {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primar-mork);
+  text-decoration: none;
+}
+
+.header nav ul,
+.meny ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.header a[aria-current="page"],
+.meny a[aria-current="page"] {
+  font-weight: 700;
+  color: var(--primar);
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.meny {
+  grid-area: meny;
+}
+
+.sidepanel {
+  grid-area: sidepanel;
+}
+
+.filter,
+.meny,
+.sidepanel {
+  background: var(--flate);
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--kant);
+}
+
+.innhold {
+  grid-area: innhold;
+  padding: 1.25rem 1rem;
+}
+
+.innhold > * + * {
+  margin-top: 1.25rem;
+}
+
+.footer {
+  grid-area: footer;
+  background: var(--primar-mork);
+  color: #d9e6df;
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+@media (min-width: 56rem) {
+  .filter,
+  .meny {
+    border-bottom: none;
+    border-right: 1px solid var(--kant);
+  }
+
+  .sidepanel {
+    border-bottom: none;
+    border-left: 1px solid var(--kant);
+  }
+
+  .innhold {
+    padding: 1.5rem;
+  }
+
+  .meny ul {
+    flex-direction: column;
+  }
+}
+
+/* ----------------------------------------------------------
+   3. INNHOLD I SONENE (eksempelinnhold, også med Grid)
+   ---------------------------------------------------------- */
+
+h1 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+.dempet {
+  color: var(--dempet);
+}
+
+.kart {
+  min-height: 18rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--kant);
+  border-radius: 0.5rem;
+  color: var(--dempet);
+  background:
+    linear-gradient(var(--kant) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    linear-gradient(90deg, var(--kant) 1px, transparent 1px) 0 0 / 2rem 2rem,
+    #e6eee9;
+}
+
+/* Kort som fyller bredden automatisk: så mange kolonner som det er plass til */
+.kort-rutenett {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.kort {
+  background: var(--flate);
+  border: 1px solid var(--kant);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.kort > * + * {
+  margin-top: 0.5rem;
+}
+
+.merke {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--kant);
+  border-radius: 999px;
+  background: #e9f1ed;
+}
+
+/* Filterskjema */
+fieldset {
+  border: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+legend {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.filter label {
+  display: block;
+}
+
+.filter select,
+.filter input[type="number"] {
+  width: 100%;
+  padding: 0.3rem;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.knapp {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--primar);
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Hytteside */
+.bilde {
+  aspect-ratio: 16 / 9;
+  max-height: 20rem;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  background: #dfe8e3;
+  color: var(--dempet);
+}
+
+.fasiliteter {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.5rem;
+}
+
+.fasiliteter li {
+  background: var(--flate);
+  border: 1px solid var(--kant);
+  border-radius: 0.375rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.fakta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin-top: 0.75rem;
+}
+
+.fakta dt {
+  font-weight: 700;
+}
+
+.fakta dd {
+  margin: 0;
+}
+
+/* Annonsørportal */
+.nokkeltall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.nokkeltall strong {
+  display: block;
+  font-size: 1.6rem;
+}
+
+.tabell-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--flate);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--kant);
+}

@@ -1,12 +1,3 @@
-// Arbeidskrav 5 - visning av JSON hyttedata med TypeScript.
-//
-// Datamodellen dekker kravet om "objekter, underobjekter og arrays":
-//   Hytte er et objekt, som inneholder et Posisjon-underobjekt, en Kontakt-underobjekt,
-//   og arrays for fasiliteter og bilder.
-//
-// Kompiler med:  npx tsc oppgave5-hytter.ts --target ES2020
-// Kjører i nettleseren via oppgave5-hytter.html som laster den kompilerte .js-fila.
-
 type Hyttetype = "betjent" | "selvbetjent" | "ubetjent";
 
 interface Posisjon {
@@ -56,7 +47,8 @@ const hytter: Hytte[] = [
         region: "Hardangervidda",
         senger: 8,
         posisjon: { breddegrad: 60.310, lengdegrad: 7.588, hoyde_moh: 1220 },
-        kontakt: { booking_url: "https://dnt.no/hytter/fondsboden" },
+        kontakt: {
+            booking_url: "https://dnt.no/hytter/fondsboden" },
         fasiliteter: ["Vedovn", "Proviantskap"],
         bilder: []
     },

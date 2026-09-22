@@ -8,7 +8,7 @@ function lagH1(tekst) {
 }
 
 // 2) Funksjon som tar en overskrift og et tall mellom 1 og 3 og genererer
-//    en overskrift på nivå 1, 2 eller 3.
+//    en overskrift på nivå 1 2 elelr 3
 function lagOverskrift(tekst, niva) {
     if (!Number.isInteger(niva) || niva < 1 || niva > 3) {
         throw new RangeError("niva må være 1, 2 eller 3");
@@ -18,7 +18,7 @@ function lagOverskrift(tekst, niva) {
     return h;
 }
 
-// 3) Funksjon som tar en liste av tekststrenger og genererer en HTML-punktliste.
+// 3) Funksjon som tar en liste av tekststrenger og genererer en HTML punktlist
 function lagPunktliste(strenger) {
     const ul = document.createElement("ul");
     for (const s of strenger) {
