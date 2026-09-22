@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "navn": "Preikestolen",
+    "region": "Rogaland",
+    "vanskelighet": "Middels",
+    "lengdeKm": 8.2,
+    "hoydemeter": 350,
+    "type": "Fottur"
+  },
+  {
+    "id": 2,
+    "navn": "Besseggen",
+    "region": "Innlandet",
+    "vanskelighet": "Krevende",
+    "lengdeKm": 14.0,
+    "hoydemeter": 1200,
+    "type": "Fottur"
+  },
+  {
+    "id": 3,
+    "navn": "Kjerag",
+    "region": "Rogaland",
+    "vanskelighet": "Krevende",
+    "lengdeKm": 12.0,
+    "hoydemeter": 570,
+    "type": "Fottur"
+  },
+  {
+    "id": 4,
+    "navn": "Trolltunga",
+    "region": "Vestland",
+    "vanskelighet": "Krevende",
+    "lengdeKm": 27.0,
+    "hoydemeter": 900,
+    "type": "Fottur"
+  },
+  {
+    "id": 5,
+    "navn": "Rondane rundt",
+    "region": "Innlandet",
+    "vanskelighet": "Middels",
+    "lengdeKm": 42.5,
+    "hoydemeter": 1500,
+    "type": "Skitur"
+  }
+]

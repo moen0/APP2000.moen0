@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leksjon 3 - Oppgave 4: Søylediagram med Chart.js</title>
+    <link rel="stylesheet" href="../leksjon02/stil.css">
+</head>
+<body>
+<main class="side">
+    <header>
+        <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 3 / Oppgave 4</p>
+        <h1>Værstatistikk siste fem måneder</h1>
+        <p class="ingress">
+            Nedbør og snittemperatur for <strong id="sted"></strong> lastes fra
+            <code>oppgave4-værdata.json</code> og vises i et søylediagram.
+            Bruk knappene under for å bytte datasett.
+        </p>
+    </header>
+
+    <section class="diagram-boks">
+        <div class="byttere" role="tablist">
+            <button type="button" class="bytt-knapp aktiv" data-datasett="nedbor" role="tab">
+                Nedbør (mm)
+            </button>
+            <button type="button" class="bytt-knapp" data-datasett="temperatur" role="tab">
+                Snittemperatur (°C)
+            </button>
+        </div>
+        <canvas id="diagram" height="140"></canvas>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="oppgave4-chart.js" defer></script>
+</body>
+</html>

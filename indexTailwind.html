@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UT.ut - Fløyen fra Sentrum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+<div class="bg-blue-800 text-white text-center text-sm py-2 font-semibold">
+   Studentoppgave.
+</div>
+
+<!-- Grid-container: 1 kolonne på mobil, 12 kolonner fra md og opp -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 max-w-6xl mx-auto p-4 min-h-screen">
+
+    <!-- Header: full bredde -->
+    <header class="md:col-span-12 bg-white rounded-lg shadow p-6 flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-emerald-700">UT.ut</h1>
+        <p class="text-sm text-slate-500">Turappen 2025/2026</p>
+    </header>
+
+    <!-- Navbar: full bredde -->
+    <nav class="md:col-span-12 bg-white rounded-lg shadow px-6 py-3 flex gap-6">
+        <a href="#" class="text-slate-700 hover:text-emerald-700 font-medium">Hjem</a>
+        <a href="#" class="text-slate-700 hover:text-emerald-700 font-medium">Finn turer</a>
+        <a href="#" class="text-slate-700 hover:text-emerald-700 font-medium">Hytter</a>
+        <a href="#" class="text-slate-700 hover:text-emerald-700 font-medium">Fellesturer</a>
+        <a href="#" class="text-slate-700 hover:text-emerald-700 font-medium ml-auto">Min profil</a>
+    </nav>
+
+    <!-- Hovedinnhold: 8 av 12 kolonner (ca. 2/3) -->
+    <main class="md:col-span-8 bg-white rounded-lg shadow p-6">
+        <h2 class="text-3xl font-bold mb-2">Fløyen fra Sentrum</h2>
+        <p class="text-slate-600 mb-4">
+            En flott og familievennlig tur som passer for alle. Turen starter midt
+            i Bergen sentrum og tar deg opp til en fantastisk utsikt over byen.
+            Ruten følger asfaltert vei og steintrapper hele veien opp.
+        </p>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-slate-100 rounded p-3">
+                <p class="text-xs uppercase text-slate-500">Vanskelighetsgrad</p>
+                <p class="font-semibold">Enkel</p>
+            </div>
+            <div class="bg-slate-100 rounded p-3">
+                <p class="text-xs uppercase text-slate-500">Tid</p>
+                <p class="font-semibold">ca. 1 time</p>
+            </div>
+        </div>
+        <button class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-2 rounded">
+            Logg som fullført
+        </button>
+    </main>
+
+    <!-- Sidebar med kart: 4 av 12 kolonner (ca. 1/3) -->
+    <aside class="md:col-span-4 bg-white rounded-lg shadow p-6">
+        <h3 class="font-semibold mb-3">Kart</h3>
+        <div class="bg-slate-200 border-2 border-dashed border-slate-400 h-64 flex items-center justify-center text-slate-500">
+            [ Her kommer Leaflet-kartet ]
+        </div>
+        <p class="text-xs text-slate-500 mt-3">Klikk på ruten for detaljer.</p>
+    </aside>
+
+    <!-- Footer: full bredde -->
+    <footer class="md:col-span-12 text-center text-sm text-slate-500 py-4 border-t border-slate-200">
+        &copy; 2026 Turappen – Utopia Turistforening
+    </footer>
+
+</div>
+</body>
+</html>

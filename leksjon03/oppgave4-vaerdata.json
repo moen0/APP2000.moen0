@@ -1,0 +1,7 @@
+{
+    "sted": "Rjukan",
+    "aar": 2025,
+    "maaneder": ["Mai", "Juni", "Juli", "August", "September"],
+    "nedbor_mm": [72, 58, 91, 84, 110],
+    "snitt_temp_c": [8.2, 12.6, 15.1, 14.3, 9.7]
+}

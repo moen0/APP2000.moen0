@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leksjon 2 - Oppgave 4: Inndatavalidering i turappen</title>
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<main class="side">
+    <header>
+        <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 2 / Oppgave 4</p>
+        <h1>Meld deg på fellestur</h1>
+        <p class="ingress">
+            Skjemaet bruker HTML5-validering (required, type, pattern, min/max) og JavaScript
+            for regler som HTML alene ikke dekker: at ledsager kun kan legges til hvis brukeren
+            er over 18, at antall deltakere ikke overstiger turens kapasitet, og at valgt
+            startdato er minst tre dager frem i tid.
+        </p>
+    </header>
+
+    <form id="påmeldingsskjema" class="skjema" novalidate>
+        <label>
+            Fullt navn
+            <input name="navn" type="text" required minlength="2" maxlength="60"
+                   placeholder="Kari Nordmann">
+            <span class="feilmelding" data-felt="navn"></span>
+        </label>
+
+        <label>
+            E-post
+            <input name="epost" type="email" required
+                   placeholder="kari@example.no">
+            <span class="feilmelding" data-felt="epost"></span>
+        </label>
+
+        <label>
+            Mobilnummer (8 siffer, norsk format)
+            <input name="mobil" type="tel" required
+                   pattern="[0-9]{8}"
+                   placeholder="99887766">
+            <span class="feilmelding" data-felt="mobil"></span>
+        </label>
+
+        <label>
+            Alder
+            <input name="alder" type="number" required min="12" max="100">
+            <span class="feilmelding" data-felt="alder"></span>
+        </label>
+
+        <label>
+            Tur
+            <select name="tur" required>
+                <option value="">-- Velg tur --</option>
+                <option value="besseggen" data-kapasitet="12">Besseggen (kapasitet 12)</option>
+                <option value="galdhopiggen" data-kapasitet="8">Galdhøpiggen (kapasitet 8)</option>
+                <option value="preikestolen" data-kapasitet="20">Preikestolen (kapasitet 20)</option>
+            </select>
+            <span class="feilmelding" data-felt="tur"></span>
+        </label>
+
+        <label>
+            Antall deltakere (inkl. deg selv)
+            <input name="antall" type="number" required min="1" max="20" value="1">
+            <span class="feilmelding" data-felt="antall"></span>
+        </label>
+
+        <label>
+            Ønsket startdato
+            <input name="startdato" type="date" required>
+            <span class="feilmelding" data-felt="startdato"></span>
+        </label>
+
+        <label>
+            <input name="ledsager" type="checkbox">
+            Jeg tar med ledsager under 18 år (krever at jeg selv er 18+)
+        </label>
+        <span class="feilmelding" data-felt="ledsager"></span>
+
+        <div class="knapper">
+            <button type="submit" class="primaer">Meld på</button>
+            <button type="reset" class="sekundaer">Nullstill</button>
+        </div>
+    </form>
+
+    <section id="kvitteringSeksjon" hidden>
+        <h2>Kvittering</h2>
+        <div id="kvittering" class="kvittering"></div>
+    </section>
+
+    <section>
+        <h2>Refleksjon: Holder klientvalidering?</h2>
+        <p>
+            <strong>Nei.</strong> All validering som gjøres i nettleseren kan omgås ved å
+            skru av JavaScript, endre HTML-attributter via utviklerverktøy eller sende
+            forespørselen direkte mot API-et (f.eks. med <code>curl</code>). Klientvalidering
+            er der for å gi rask tilbakemelding og god brukeropplevelse, men serveren må
+            <em>alltid</em> validere på nytt før data lagres. Sensitive regler
+            (autorisasjon, prisberegning, kapasitet, dobbeltbooking) hører hjemme på serveren.
+            Klientvalidering = UX. Servervalidering = sikkerhet.
+        </p>
+    </section>
+</main>
+
+<script src="oppgave4-skjema.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leksjon 2 - Oppgave 1: Oppdatere DOM-en</title>
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<main class="side">
+    <header>
+        <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 2 / Oppgave 1</p>
+        <h1>Oppdatere DOM-en</h1>
+        <p class="ingress">
+            Skriv en tekst i feltet og trykk <em>Legg til</em>. Teksten blir lagt til
+            som et nytt avsnitt nederst. Klikk et avsnitt for å fjerne det igjen.
+        </p>
+    </header>
+
+    <section class="skjema-boks">
+        <label for="tekstfelt" class="visuelt-skjult">Tekst som skal legges til</label>
+        <input id="tekstfelt" type="text" placeholder="Skriv noe her..." autocomplete="off">
+        <button id="leggTilKnapp" type="button">Legg til</button>
+    </section>
+
+    <section aria-live="polite">
+        <h2>Avsnitt</h2>
+        <div id="avsnittContainer" class="avsnitt-liste"></div>
+    </section>
+</main>
+
+<script src="oppgave1-dom.js" defer></script>
+</body>
+</html>

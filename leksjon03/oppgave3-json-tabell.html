@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leksjon 3 - Oppgave 3: JSON til HTML-tabell</title>
+    <link rel="stylesheet" href="../leksjon02/stil.css">
+</head>
+<body>
+<main class="side">
+    <header>
+        <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 3 / Oppgave 3</p>
+        <h1>JSON til HTML-tabell</h1>
+        <p class="ingress">
+            Funksjonen <code>bygTabell(rader, container)</code> tar en liste med objekter
+            og bygger en HTML-tabell hvor kolonnene utledes av nøklene i det første objektet.
+            Dermed fungerer den for et hvilket som helst spørreresultat.
+        </p>
+    </header>
+
+    <section>
+        <h2>Turer (fra <code>oppgave3-turer.json</code>)</h2>
+        <div id="tabell-container"></div>
+    </section>
+
+    <section>
+        <h2>Samme funksjon med et helt annet datasett</h2>
+        <p>For å vise generaliteten: samme kode brukt på en liste med hytter.</p>
+        <div id="tabell-container-2"></div>
+    </section>
+</main>
+
+<script src="oppgave3-json-tabell.js" defer></script>
+</body>
+</html>

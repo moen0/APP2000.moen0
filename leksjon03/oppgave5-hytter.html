@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leksjon 3 - Arbeidskrav 5: TypeScript-visning av hytter</title>
+    <link rel="stylesheet" href="../leksjon02/stil.css">
+</head>
+<body>
+<main class="side">
+    <header>
+        <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 3 / Arbeidskrav 5</p>
+        <h1>Hytter i turappen</h1>
+        <p class="ingress">
+            Data om hyttene er beskrevet med TypeScript-interfaces (se
+            <code>oppgave5-hytter.ts</code>). JSON-strukturen har objekter (Hytte),
+            underobjekter (Posisjon, Kontakt) og arrays (fasiliteter, bilder).
+            Nettleseren laster den kompilerte JavaScript-fila.
+        </p>
+    </header>
+
+    <section>
+        <h2>Hyttekort</h2>
+        <div id="hytte-liste" class="hytte-liste"></div>
+    </section>
+
+    <section>
+        <h2>Fordeler og ulemper med TypeScript for denne oppgaven</h2>
+        <h3>Fordeler</h3>
+        <ul>
+            <li><strong>Feil fanges på kompileringstidspunkt:</strong> Hvis noen
+                skriver <code>hytte.senge</code> i stedet for <code>hytte.senger</code>,
+                stopper tsc oss før koden når nettleseren.</li>
+            <li><strong>Dokumenterende typer:</strong> <code>interface Hytte</code>
+                fungerer som en kontrakt for backend, frontend og JSON-formatet samtidig.</li>
+            <li><strong>Autocomplete og refactoring:</strong> Editoren foreslår
+                <code>posisjon.hoyde_moh</code> og "rename symbol" oppdaterer alt.</li>
+            <li><strong>Literal-typer:</strong> <code>type Hyttetype = "betjent" | "selvbetjent" | "ubetjent"</code>
+                gjør det umulig å sette en ugyldig verdi.</li>
+        </ul>
+        <h3>Ulemper</h3>
+        <ul>
+            <li><strong>Ekstra byggetrinn:</strong> tsc / bundler må kjøres før siden fungerer.</li>
+            <li><strong>Ingen runtime-sjekk:</strong> <code>JSON.parse</code> returnerer
+                <code>any</code>, og <code>as Hytte</code> lurer bare kompilatoren.
+                For data utenfra trenger vi type guards eller <em>Zod</em>.</li>
+            <li><strong>Bratt læringskurve for nybegynnere:</strong> generics og strict null
+                checks kan være frustrerende første gang.</li>
+            <li><strong>Konfigurasjon:</strong> tsconfig, module-systemer og
+                DOM-typer må settes opp riktig.</li>
+        </ul>
+
+        <h2>Hvordan koden kan testes</h2>
+        <ul>
+            <li><strong>Enhetstester (Jest/Vitest):</strong> teste <code>typeEtikett</code>,
+                <code>lagKontaktLinje</code>, <code>lagHyttekort</code> mot
+                jsdom - sjekke at riktige klasser og tekst finnes.</li>
+            <li><strong>Schema-validering:</strong> Zod-schema for <code>Hytte</code>
+                som brukes for å validere JSON fra API/fil ved runtime.</li>
+            <li><strong>Snapshot-test:</strong> gitt et fast datasett, sjekk at generert
+                HTML-struktur er den vi forventer.</li>
+            <li><strong>Type-tester:</strong> <code>expectTypeOf</code> (fra Vitest) for
+                å verifisere at signaturene ikke endres uten at tester røder.</li>
+            <li><strong>End-to-end (Playwright):</strong> serve siden, sjekke at tre
+                hyttekort vises og at bookingslenka peker riktig sted.</li>
+        </ul>
+    </section>
+</main>
+
+<script src="oppgave5-hytter.js" defer></script>
+</body>
+</html>
