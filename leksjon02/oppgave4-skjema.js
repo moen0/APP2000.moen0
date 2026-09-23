@@ -30,7 +30,7 @@ function valider() {
     const startdato = (data.get("startdato") || "").toString();
     const ledsager = skjema.elements["ledsager"].checked;
 
-    // HTML5-validering først (dekker required, type, pattern, min/max)
+    // html validerin
     if (!skjema.checkValidity()) {
         const felt = ["navn", "epost", "mobil", "alder", "tur", "antall", "startdato"];
         for (const f of felt) {
@@ -56,7 +56,7 @@ function valider() {
         }
     }
 
-    // 2. Antall deltakere kan ikke overstige kapasiteten på den valgte turen
+    // 2. antall deltakere kan ikke overstige kapasiteten på den valgte turen
     const valgt = skjema.elements["tur"].selectedOptions[0];
     if (valgt && valgt.dataset.kapasitet) {
         const kapasitet = Number(valgt.dataset.kapasitet);
@@ -66,9 +66,9 @@ function valider() {
         }
     }
 
-    // 3. Ledsager krever at brukeren selv er 18+
-    if (ledsager && alder < 18) {
-        visFeil("ledsager", "Du må være 18 år for å ta med ledsager under 18.");
+    // 3. Deltakere under 18 må reise med en voksen
+    if (alder < 18 && !ledsager) {
+        visFeil("ledsager", "Deltakere under 18 må reise med en voksen ledsager (18+).");
         ok = false;
     }
 

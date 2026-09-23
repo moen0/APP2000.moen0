@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="stil.css">
 </head>
 <body>
+
+<div class="usn-banner">
+    USN Student Prosjekt
+</div>
 <main class="side">
     <header>
         <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 2 / Oppgave 4</p>
         <h1>Meld deg på fellestur</h1>
         <p class="ingress">
             Skjemaet bruker HTML5-validering (required, type, pattern, min/max) og JavaScript
-            for regler som HTML alene ikke dekker: at ledsager kun kan legges til hvis brukeren
-            er over 18, at antall deltakere ikke overstiger turens kapasitet, og at valgt
+            for regler som HTML alene ikke dekker: at deltakere under 18 må reise med en voksen
+            ledsager, at antall deltakere ikke overstiger turens kapasitet, og at valgt
             startdato er minst tre dager frem i tid.
         </p>
     </header>
@@ -73,7 +77,7 @@
 
         <label>
             <input name="ledsager" type="checkbox">
-            Jeg tar med ledsager under 18 år (krever at jeg selv er 18+)
+            Jeg reiser med en voksen ledsager (18 år eller eldre) - påkrevd hvis du selv er under 18
         </label>
         <span class="feilmelding" data-felt="ledsager"></span>
 
@@ -96,9 +100,7 @@
             forespørselen direkte mot API-et (f.eks. med <code>curl</code>). Klientvalidering
             er der for å gi rask tilbakemelding og god brukeropplevelse, men serveren må
             <em>alltid</em> validere på nytt før data lagres. Sensitive regler
-            (autorisasjon, prisberegning, kapasitet, dobbeltbooking) hører hjemme på serveren.
-            Klientvalidering = UX. Servervalidering = sikkerhet.
-        </p>
+            (autorisasjon, prisberegning, kapasitet, dobbeltbooking) hører hjemme på serveren.</p>
     </section>
 </main>
 

@@ -17,6 +17,15 @@ body {
     line-height: 1.5;
 }
 
+.usn-banner {
+    background-color: #5d21d9;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
 .side {
     max-width: 780px;
     margin: 0 auto;
