@@ -42,8 +42,7 @@ function valider() {
         }
     }
 
-    // JS-regler som HTML5 ikke kan uttrykke:
-
+    // JS-regler
     // 1. Startdato minst 3 dager frem i tid
     if (startdato) {
         const valgt = new Date(startdato);
@@ -94,7 +93,7 @@ skjema.addEventListener("reset", () => {
     kvitteringSeksjon.hidden = true;
 });
 
-// Live-validering på input for umiddelbar tilbakemelding
+// live validering på input
 skjema.addEventListener("input", (e) => {
     const felt = e.target.name;
     if (!felt) return;
