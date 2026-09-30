@@ -217,4 +217,5 @@ table.datatabell tr:nth-child(even) td { background: #fafafa; }
 .hyttekort .meta { font-size: 0.85rem; color: #666; margin-bottom: 10px; }
 .hyttekort ul { padding-left: 18px; margin: 8px 0; }
 .hyttekort .type-betjent { color: var(--primary); font-weight: 600; }
+.hyttekort .type-selvbetjent { color: #0277bd; font-weight: 600; }
 .hyttekort .type-ubetjent { color: #ef6c00; font-weight: 600; }

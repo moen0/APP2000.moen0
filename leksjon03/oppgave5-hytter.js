@@ -39,7 +39,7 @@ export function lagHyttekort(hytte) {
     meta.classList.add("meta");
     const typeSpan = document.createElement("span");
     typeSpan.textContent = typeEtikett(hytte.type);
-    typeSpan.classList.add(hytte.type === "betjent" ? "type-betjent" : "type-ubetjent");
+    typeSpan.classList.add(`type-${hytte.type}`);
     meta.appendChild(typeSpan);
     meta.append(` * ${hytte.region} * ${hytte.senger} senger * ${hytte.posisjon.hoyde_moh} moh`);
     kort.appendChild(meta);
