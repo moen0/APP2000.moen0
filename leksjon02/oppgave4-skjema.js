@@ -8,7 +8,7 @@ function visFeil(felt, melding) {
     const boks = skjema.querySelector(`[data-felt="${felt}"]`);
     if (boks) boks.textContent = melding;
     const felt_el = skjema.elements[felt];
-    if (felt_el) felt_el.classList.toggle("js-feil", Boolean(melding));
+    if (felt_el) felt_el.classList.toggle("js-feil", Boolean(melding));  // tom melding fjerner klassen
 }
 
 function nullstillFeil() {
@@ -28,26 +28,26 @@ function valider() {
     const tur = (data.get("tur") || "").toString();
     const antall = Number(data.get("antall"));
     const startdato = (data.get("startdato") || "").toString();
-    const ledsager = skjema.elements["ledsager"].checked;
+    const ledsager = skjema.elements["ledsager"].checked;   // uhuket checkbox finnes ikke i FormData
 
-    // html validerin
+    // html-validering: novalidate skrur bare av boblene, reglene gjelder fortsatt
     if (!skjema.checkValidity()) {
         const felt = ["navn", "epost", "mobil", "alder", "tur", "antall", "startdato"];
         for (const f of felt) {
             const el = skjema.elements[f];
             if (el && !el.validity.valid) {
-                visFeil(f, el.validationMessage);
+                visFeil(f, el.validationMessage);    // nettleserens egen feiltekst
                 ok = false;
             }
         }
     }
 
-    // JS-regler
+    // JS-regler: disse kan ikke uttrykkes med HTML-attributter
     // 1. Startdato minst 3 dager frem i tid
     if (startdato) {
         const valgt = new Date(startdato);
         const grense = new Date();
-        grense.setHours(0, 0, 0, 0);
+        grense.setHours(0, 0, 0, 0);    // nullstiller klokka så vi sammenligner dager
         grense.setDate(grense.getDate() + 3);
         if (valgt < grense) {
             visFeil("startdato", "Startdato må være minst 3 dager frem i tid.");
@@ -58,7 +58,7 @@ function valider() {
     // 2. antall deltakere kan ikke overstige kapasiteten på den valgte turen
     const valgt = skjema.elements["tur"].selectedOptions[0];
     if (valgt && valgt.dataset.kapasitet) {
-        const kapasitet = Number(valgt.dataset.kapasitet);
+        const kapasitet = Number(valgt.dataset.kapasitet);  // dataset gir string, må konverteres
         if (antall > kapasitet) {
             visFeil("antall", `Denne turen har plass til ${kapasitet}. Du ba om ${antall}.`);
             ok = false;
@@ -71,19 +71,20 @@ function valider() {
         ok = false;
     }
 
+    // data ut hvis alt er gyldig, ellers null, så kallestedet bare har én ting å sjekke
     return ok
         ? { navn, epost, mobil, alder, tur, antall, startdato, ledsager }
         : null;
 }
 
 skjema.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault();     // uten denne lastes siden på nytt og alt forsvinner
     const resultat = valider();
     if (!resultat) {
         kvitteringSeksjon.hidden = true;
         return;
     }
-    kvittering.textContent = JSON.stringify(resultat, null, 2);
+    kvittering.textContent = JSON.stringify(resultat, null, 2);     // viser det som ville blitt sendt
     kvitteringSeksjon.hidden = false;
     kvitteringSeksjon.scrollIntoView({ behavior: "smooth", block: "start" });
 });
@@ -93,7 +94,7 @@ skjema.addEventListener("reset", () => {
     kvitteringSeksjon.hidden = true;
 });
 
-// live validering på input
+// live validering: fjerner feilmeldingen så snart feltet blir gyldig
 skjema.addEventListener("input", (e) => {
     const felt = e.target.name;
     if (!felt) return;

@@ -1,11 +1,14 @@
+// union: bare disse tre verdiene er lovlige
 export type Hyttetype = "betjent" | "selvbetjent" | "ubetjent";
 
+// underobjekt
 export interface Posisjon {
     breddegrad: number;
     lengdegrad: number;
     hoyde_moh: number;
 }
 
+// underobjekt der alle feltene er valgfrie (?)
 export interface Kontakt {
     telefon?: string;
     epost?: string;
@@ -20,24 +23,20 @@ export interface Hytte {
     senger: number;
     posisjon: Posisjon;
     kontakt: Kontakt;
-    fasiliteter: string[];
+    fasiliteter: string[];      // array
     bilder: string[];
 }
 
-/**
- * Henter hyttedata fra JSON-fila ved siden av HTML-siden.
- *
- * Merk: `as Hytte[]` overbeviser bare kompilatoren. JSON som kommer utenfra
- * er utypet ved kjøretid, så neste steg er en type guard (se rapporten).
- */
+// henter hyttedata fra JSON-fila som ligger ved siden av HTML-siden
 export async function hentHytter(url = "oppgave5-hytter.json"): Promise<Hytte[]> {
     const respons = await fetch(url);
-    if (!respons.ok) {
+    if (!respons.ok) {      // fetch kaster ikke feil på 404, må sjekkes selv
         throw new Error(`Klarte ikke å laste ${url} (HTTP ${respons.status})`);
     }
-    return await respons.json() as Hytte[];
+    return await respons.json() as Hytte[];     // as overbeviser bare kompilatoren, ingen sjekk ved kjøretid
 }
 
+// ingen default: en fjerde hyttetype gir kompileringsfeil her
 export function typeEtikett(type: Hyttetype): string {
     switch (type) {
         case "betjent": return "Betjent";
@@ -51,7 +50,7 @@ export function lagKontaktLinje(k: Kontakt): HTMLParagraphElement {
     const deler: string[] = [];
     if (k.telefon) deler.push(k.telefon);
     if (k.epost) deler.push(k.epost);
-    p.textContent = deler.join("  |  ") || "Kun bookbar online";
+    p.textContent = deler.join("  |  ") || "Kun bookbar online";    // tom join gir tom streng, som er falsy
     p.classList.add("meta");
     return p;
 }
@@ -68,9 +67,9 @@ export function lagHyttekort(hytte: Hytte): HTMLElement {
     meta.classList.add("meta");
     const typeSpan = document.createElement("span");
     typeSpan.textContent = typeEtikett(hytte.type);
-    typeSpan.classList.add(`type-${hytte.type}`);
+    typeSpan.classList.add(`type-${hytte.type}`);   // klassen bygges av verdien: type-betjent osv.
     meta.appendChild(typeSpan);
-    meta.append(
+    meta.append(    // append tar tekst, appendChild tar bare elementer
         ` * ${hytte.region} * ${hytte.senger} senger * ${hytte.posisjon.hoyde_moh} moh`
     );
     kort.appendChild(meta);
@@ -89,7 +88,7 @@ export function lagHyttekort(hytte: Hytte): HTMLElement {
     }
     kort.appendChild(ul);
 
-    if (hytte.kontakt.booking_url) {
+    if (hytte.kontakt.booking_url) {    // lenka lages bare hvis feltet finnes
         const a = document.createElement("a");
         a.href = hytte.kontakt.booking_url;
         a.textContent = "Book hytte";
@@ -98,19 +97,19 @@ export function lagHyttekort(hytte: Hytte): HTMLElement {
         kort.appendChild(a);
     }
 
-    return kort;
+    return kort;    // kalleren bestemmer hvor kortet havner, det gjør funksjonen lett å teste
 }
 
 export function visHytter(hytter: Hytte[], container: HTMLElement): void {
-    container.replaceChildren();
+    container.replaceChildren();    // tømmer først, ellers dobles kortene ved nytt kall
     for (const h of hytter) {
         container.appendChild(lagHyttekort(h));
     }
 }
 
 const container = document.querySelector("#hytte-liste") as HTMLElement | null;
-if (container) {
-    hentHytter()
+if (container) {    // strict tvinger oss til å utelukke null før bruk
+    hentHytter()        // .then fordi await på toppnivå krever module es2022
         .then(hytter => visHytter(hytter, container))
         .catch((feil: unknown) => {
             container.textContent = "Kunne ikke laste hyttedata fra " +

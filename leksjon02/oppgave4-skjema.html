@@ -23,6 +23,7 @@
         </p>
     </header>
 
+    <!-- novalidate: vi viser egne feilmeldinger i stedet for nettleserens bobler -->
     <form id="påmeldingsskjema" class="skjema" novalidate>
         <label>
             Fullt navn
@@ -54,6 +55,7 @@
 
         <label>
             Tur
+            <!-- kapasiteten hører til turen, leses i JS med dataset -->
             <select name="tur" required>
                 <option value="">-- Velg tur --</option>
                 <option value="besseggen" data-kapasitet="12">Besseggen (kapasitet 12)</option>
