@@ -1,0 +1,17 @@
+{
+  "name": "app2000-moen0",
+  "version": "1.0.0",
+  "private": true,
+  "description": "APP2000 arbeidskrav 1 - gruppe 2",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:ts": "tsc --project leksjon03/tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "jsdom": "^29.1.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

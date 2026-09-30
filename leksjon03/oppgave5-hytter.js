@@ -76,8 +76,8 @@ if (container) {
         .then(hytter => visHytter(hytter, container))
         .catch((feil) => {
         container.textContent = "Kunne ikke laste hyttedata fra " +
-            "oppgave5-hytter.json. Sjekk at siden kjøres over HTTP, " +
-            "for eksempel med python3 -m http.server.";
+            "oppgave5-hytter.json. Sjekk at siden åpnes via en webserver " +
+            "(IntelliJ sin innebygde, eller python3 -m http.server).";
         console.error(feil);
     });
 }
