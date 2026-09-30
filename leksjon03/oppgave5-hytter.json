@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "navn": "Rondvassbu",
+    "type": "betjent",
+    "region": "Rondane",
+    "senger": 90,
+    "posisjon": { "breddegrad": 61.919, "lengdegrad": 9.847, "hoyde_moh": 1170 },
+    "kontakt": {
+      "telefon": "+47 61 23 45 67",
+      "epost": "rondvassbu@dnt.no",
+      "booking_url": "https://dnt.no/hytter/rondvassbu"
+    },
+    "fasiliteter": ["Middagsservering", "Dusj", "Strøm", "Butikk"],
+    "bilder": []
+  },
+  {
+    "id": 2,
+    "navn": "Fondsboden",
+    "type": "ubetjent",
+    "region": "Hardangervidda",
+    "senger": 8,
+    "posisjon": { "breddegrad": 60.310, "lengdegrad": 7.588, "hoyde_moh": 1220 },
+    "kontakt": {
+      "booking_url": "https://dnt.no/hytter/fondsboden"
+    },
+    "fasiliteter": ["Vedovn", "Proviantskap"],
+    "bilder": []
+  },
+  {
+    "id": 3,
+    "navn": "Glitterheim",
+    "type": "betjent",
+    "region": "Jotunheimen",
+    "senger": 76,
+    "posisjon": { "breddegrad": 61.596, "lengdegrad": 8.542, "hoyde_moh": 1385 },
+    "kontakt": {
+      "telefon": "+47 61 21 20 74",
+      "booking_url": "https://dnt.no/hytter/glitterheim"
+    },
+    "fasiliteter": ["Middagsservering", "Frokost", "Utleie av utstyr"],
+    "bilder": []
+  }
+]

@@ -16,10 +16,13 @@
         <p class="brodsmuler"><a href="../index.html">UT.ut</a> / Leksjon 3 / Arbeidskrav 5</p>
         <h1>Hytter i turappen</h1>
         <p class="ingress">
-            Data om hyttene er beskrevet med TypeScript-interfaces (se
-            <code>oppgave5-hytter.ts</code>). JSON-strukturen har objekter (Hytte),
-            underobjekter (Posisjon, Kontakt) og arrays (fasiliteter, bilder).
-            Nettleseren laster den kompilerte JavaScript-fila.
+            Hyttedataene ligger i <code>oppgave5-hytter.json</code> og hentes med
+            <code>fetch</code>. Strukturen er beskrevet med TypeScript-interfaces i
+            <code>oppgave5-hytter.ts</code>: objekter (Hytte), underobjekter
+            (Posisjon, Kontakt) og arrays (fasiliteter, bilder). Nettleseren laster
+            den kompilerte JavaScript-fila som en ES-modul, så siden må kjøres over
+            HTTP (<code>python3 -m http.server</code>) og ikke som
+            <code>file://</code>.
         </p>
     </header>
 
@@ -71,6 +74,6 @@
     </section>
 </main>
 
-<script src="oppgave5-hytter.js" defer></script>
+<script src="oppgave5-hytter.js" type="module"></script>
 </body>
 </html>

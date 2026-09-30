@@ -1,18 +1,18 @@
-type Hyttetype = "betjent" | "selvbetjent" | "ubetjent";
+export type Hyttetype = "betjent" | "selvbetjent" | "ubetjent";
 
-interface Posisjon {
+export interface Posisjon {
     breddegrad: number;
     lengdegrad: number;
     hoyde_moh: number;
 }
 
-interface Kontakt {
+export interface Kontakt {
     telefon?: string;
     epost?: string;
     booking_url?: string;
 }
 
-interface Hytte {
+export interface Hytte {
     id: number;
     navn: string;
     type: Hyttetype;
@@ -24,51 +24,21 @@ interface Hytte {
     bilder: string[];
 }
 
-const hytter: Hytte[] = [
-    {
-        id: 1,
-        navn: "Rondvassbu",
-        type: "betjent",
-        region: "Rondane",
-        senger: 90,
-        posisjon: { breddegrad: 61.919, lengdegrad: 9.847, hoyde_moh: 1170 },
-        kontakt: {
-            telefon: "+47 61 23 45 67",
-            epost: "rondvassbu@dnt.no",
-            booking_url: "https://dnt.no/hytter/rondvassbu"
-        },
-        fasiliteter: ["Middagsservering", "Dusj", "Strøm", "Butikk"],
-        bilder: []
-    },
-    {
-        id: 2,
-        navn: "Fondsboden",
-        type: "ubetjent",
-        region: "Hardangervidda",
-        senger: 8,
-        posisjon: { breddegrad: 60.310, lengdegrad: 7.588, hoyde_moh: 1220 },
-        kontakt: {
-            booking_url: "https://dnt.no/hytter/fondsboden" },
-        fasiliteter: ["Vedovn", "Proviantskap"],
-        bilder: []
-    },
-    {
-        id: 3,
-        navn: "Glitterheim",
-        type: "betjent",
-        region: "Jotunheimen",
-        senger: 76,
-        posisjon: { breddegrad: 61.596, lengdegrad: 8.542, hoyde_moh: 1385 },
-        kontakt: {
-            telefon: "+47 61 21 20 74",
-            booking_url: "https://dnt.no/hytter/glitterheim"
-        },
-        fasiliteter: ["Middagsservering", "Frokost", "Utleie av utstyr"],
-        bilder: []
+/**
+ * Henter hyttedata fra JSON-fila ved siden av HTML-siden.
+ *
+ * Merk: `as Hytte[]` overbeviser bare kompilatoren. JSON som kommer utenfra
+ * er utypet ved kjøretid, så neste steg er en type guard (se rapporten).
+ */
+export async function hentHytter(url = "oppgave5-hytter.json"): Promise<Hytte[]> {
+    const respons = await fetch(url);
+    if (!respons.ok) {
+        throw new Error(`Klarte ikke å laste ${url} (HTTP ${respons.status})`);
     }
-];
+    return await respons.json() as Hytte[];
+}
 
-function typeEtikett(type: Hyttetype): string {
+export function typeEtikett(type: Hyttetype): string {
     switch (type) {
         case "betjent": return "Betjent";
         case "selvbetjent": return "Selvbetjent";
@@ -76,7 +46,7 @@ function typeEtikett(type: Hyttetype): string {
     }
 }
 
-function lagKontaktLinje(k: Kontakt): HTMLParagraphElement {
+export function lagKontaktLinje(k: Kontakt): HTMLParagraphElement {
     const p = document.createElement("p");
     const deler: string[] = [];
     if (k.telefon) deler.push(k.telefon);
@@ -86,7 +56,7 @@ function lagKontaktLinje(k: Kontakt): HTMLParagraphElement {
     return p;
 }
 
-function lagHyttekort(hytte: Hytte): HTMLElement {
+export function lagHyttekort(hytte: Hytte): HTMLElement {
     const kort = document.createElement("article");
     kort.classList.add("hyttekort");
 
@@ -131,7 +101,7 @@ function lagHyttekort(hytte: Hytte): HTMLElement {
     return kort;
 }
 
-function visHytter(hytter: Hytte[], container: HTMLElement): void {
+export function visHytter(hytter: Hytte[], container: HTMLElement): void {
     container.replaceChildren();
     for (const h of hytter) {
         container.appendChild(lagHyttekort(h));
@@ -140,5 +110,12 @@ function visHytter(hytter: Hytte[], container: HTMLElement): void {
 
 const container = document.querySelector("#hytte-liste") as HTMLElement | null;
 if (container) {
-    visHytter(hytter, container);
+    hentHytter()
+        .then(hytter => visHytter(hytter, container))
+        .catch((feil: unknown) => {
+            container.textContent = "Kunne ikke laste hyttedata fra " +
+                "oppgave5-hytter.json. Sjekk at siden kjøres over HTTP, " +
+                "for eksempel med python3 -m http.server.";
+            console.error(feil);
+        });
 }
